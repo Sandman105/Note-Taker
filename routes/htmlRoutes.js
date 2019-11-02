@@ -7,7 +7,7 @@ var router = require('express').Router();
 // TODO: Define a route for your `notes.html` file
 //    and serve it from `public/`
 
-console.log("Line 10")
+console.log("Line 10 HTML ROUTES")
 
 router.get('/', function(req, res) {
   console.log("Home page sent");

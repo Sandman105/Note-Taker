@@ -2,16 +2,16 @@ var router = require('express').Router();
 var connection = require('../db/connection');
 
 // https://expressjs.com/en/guide/routing.html
-
+console.log("Line 5 API ROUTES")
 // GET responds with all notes from the database
 // https://expressjs.com/en/4x/api.html#app.get.method
 router.get('/api/notes', function (req, res) {
-  connection.query("SELECT * FROM notes;", function (err, data) {
+  connection.query("SELECT * FROM notes;", function (err, noteData) {
     if (err) throw err;
     
-    res.json(data);
+    res.json(noteData);
 
-    console.log('The solution is: ', data);
+    console.log('The solution is: ', noteData);
   });
   
   // TODO: Create connection query to retrieve all notes from MySQL database

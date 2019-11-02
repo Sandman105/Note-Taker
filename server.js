@@ -21,7 +21,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-console.log("Line 24");
+console.log("Line 24 SERVER");
 // TODO: Mount your HTML and API routes
 // https://expressjs.com/en/api.html#app.use
 var apiRoutes = require("./routes/apiRoutes");
