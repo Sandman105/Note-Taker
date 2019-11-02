@@ -3,10 +3,10 @@
 function currentNotes() {
 
     $.ajax({ url: '/api/notes', method: "GET" })
-        .then(function (data) {
+        .then(function (dataNote) {
 
 
-            console.log(data);
+            console.log(dataNote);
 
 
         });
