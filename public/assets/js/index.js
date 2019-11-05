@@ -40,24 +40,14 @@ function displayCurrentDbNotes(notes) {
 
 
     }
-    noteList.prepend(allNotes);
-
-
-
+    noteList.append(allNotes);
 
 }
-
-
-
 // get the note data from the inputs, save it to the db and update the view
 
 // create a function to save (post) a new note
 
 // create a function to delete the clicked note
-
-
-
-
 
 $(".save-note").on("click", function (event) {
     event.preventDefault();
@@ -82,7 +72,22 @@ $(".save-note").on("click", function (event) {
         }
     });
 
-
-
-
 });
+
+function deleteCurrentDbNotes () {
+    
+
+    var note = $(this).parents(".list-group-item").data();
+    console.log(note);
+    
+    $.ajax({
+      url: "/api/notes/" + note.id,
+      method: "DELETE"
+    }).then(function() {
+      location.reload();
+    });
+
+
+
+}
+noteList.on("click", ".delete-note", deleteCurrentDbNotes);
