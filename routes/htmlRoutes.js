@@ -21,9 +21,9 @@ router.get('/notes', function(req, res) {
 // https://expressjs.com/en/api.html#res.sendFile
 
 // All other routes respond with the index.html file
-router.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './index.html'));
-});
+// router.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, './index.html'));
+// });
 
 module.exports = router; 
 

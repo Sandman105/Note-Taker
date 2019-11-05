@@ -1,34 +1,55 @@
-// get the note data from the inputs, save it to the db and update the view
-// Need to make sure I can grab the data from the table and the seeds
-function currentNotes() {
+// create a function to render the list of notes and read all notes from the database, need to make sure I can grab the data from the table and the seeds. Confused about the first line of code.
+var noteList = $(".list-container .list-group");
 
-    $.ajax({ url: '/api/notes', method: "GET" })
-        .then(function (dataNote) {
+function getCurrentDbNotes() {
 
-
-            console.log(dataNote);
+    $.ajax({
+        url: '/api/notes',
+        method: "GET"
+    })
+        .then(function (noteData) {
+            displayCurrentDbNotes(noteData);
+            console.log(noteData);
 
 
         });
 
+}
+
+getCurrentDbNotes()
+
+function displayCurrentDbNotes(notes) {
+
+    var allNotes = [];
+
+    for (var i = 0; i < notes.length; i++) {
+        var note = notes[i];
+        console.log(note);
+
+        var list = $("<li class='list-group-item'>").append(note);
+        console.log(list);
+        var titleDiv = $("<div>");
+        var titleSpan = $("<span class='font-weight-bold'>").text(note.title);
+        var delButton = $("<i class='fas fa-trash-alt float-right text-danger delete-note'>");
+        var notePara = $("<p class='mt-2'>").text(note.body);
 
 
-
-    //Need to make some test jQuery <div> <ul> just to see if it can post the information on the page.
-
-
-
+        titleDiv.append(titleSpan, delButton);
+        list.prepend(titleDiv, notePara);
+        allNotes.push(list);
 
 
-
-
+    }
+    noteList.prepend(allNotes);
 
 
 
 
 }
 
-// create a function to render the list of notes and read all notes from the database
+
+
+// get the note data from the inputs, save it to the db and update the view
 
 // create a function to save (post) a new note
 
@@ -38,21 +59,30 @@ function currentNotes() {
 
 
 
-$(".submit").on("click", function (event) {
+$(".save-note").on("click", function (event) {
     event.preventDefault();
 
     var newNote = {
-        noteTitle: $("#title").val().trim(),
-        userNote: $("#user-note").val().trim(),
+        title: $("#title").val().trim(),
+        body: $("#user-note").val().trim(),
     }
 
     console.log(newNote);
     //Working submit button
 
-    $.post('/api/notes', newNote, function (data) {
+    $.ajax({
+        url: '/api/notes',
+        data: newNote,
+        method: "POST"
+    }).then(function (data) {
+        location.reload();
+        console.log(data);
         if (data) {
             alert("Note has been updated");
         }
-    })
+    });
+
+
+
 
 });

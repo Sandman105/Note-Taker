@@ -27,8 +27,8 @@ console.log("Line 24 SERVER");
 var apiRoutes = require("./routes/apiRoutes");
 var htmlRoutes = require("./routes/htmlRoutes");
 
-app.use("/", htmlRoutes);
-app.use("/api", apiRoutes);
+app.use(htmlRoutes);
+app.use(apiRoutes);
 
 
 //require("./routes/htmlRoutes")(app);

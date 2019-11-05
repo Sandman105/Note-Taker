@@ -14,7 +14,7 @@ body {
     background: #111111;
 }
 
-#note-button {
+.save-note {
     font-family: 'Indie Flower', cursive;
     font-size: 20px;
     background: #111111;
