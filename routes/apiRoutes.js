@@ -32,7 +32,7 @@ router.post('/api/notes', function (req, res) {
 
 // DELETE deletes the note with an id equal to req.params.id
 // https://expressjs.com/en/4x/api.html#app.delete.method
-router.delete('/api/notes:id', function (req, res) {
+router.delete('/api/notes/:id', function (req, res) {
   connection.query("DELETE FROM notes WHERE id = ?", [req.params.id], function (err, data) {
     if (err) throw err;
     res.json(data);

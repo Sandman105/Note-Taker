@@ -24,14 +24,15 @@ function displayCurrentDbNotes(notes) {
 
     for (var i = 0; i < notes.length; i++) {
         var note = notes[i];
-        console.log(note);
+        console.log("Test" + note);
 
-        var list = $("<li class='list-group-item'>").append(note);
+        var list = $("<li class='list-group-item' id='" + note.id + "'>").append(note);
         console.log(list);
         var titleDiv = $("<div>");
         var titleSpan = $("<span class='font-weight-bold'>").text(note.title);
-        var delButton = $("<i class='fas fa-trash-alt float-right text-danger delete-note'>");
+        var delButton = $("<i class='fas fa-trash-alt float-right text-danger delete-note'id='" + note.id + "'>");
         var notePara = $("<p class='mt-2'>").text(note.body);
+
 
 
         titleDiv.append(titleSpan, delButton);
@@ -76,12 +77,12 @@ $(".save-note").on("click", function (event) {
 
 function deleteCurrentDbNotes () {
     
-
+    console.log(this.id);
     var note = $(this).parents(".list-group-item").data();
     console.log(note);
     
     $.ajax({
-      url: "/api/notes/" + note.id,
+      url: '/api/notes/' + this.id,
       method: "DELETE"
     }).then(function() {
       location.reload();
