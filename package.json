@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Sandman105/Note-Taker#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql": "^2.17.1"
   }
 }
